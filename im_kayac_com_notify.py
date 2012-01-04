@@ -6,11 +6,21 @@ Homepage: https://github.com/mizzy/weechat-plugins/
 Version: 1.0
 License: MIT License
 
+This plugin requires "im.kayac.com" in your iPod touch/iPhone
+See here: http://im.kayac.com/
+
 This plugins is based on notifo_notify.py.
 See: http://www.weechat.org/scripts/source/stable/notifo_notify.py/
 
-This plugin requires "im.kayac.com" in your iPod touch/iPhone
-See here: http://im.kayac.com/
+Original license is:
+
+Author: SAEKI Yoshiyasu <laclef_yoshiyasu@yahoo.co.jp>
+Homepage: http://bitbucket.org/laclefyoshi/weechat/
+Version: 1.0
+License: MIT License
+
+This plugin requires "notifo" in your iPod touch/iPhone
+See here: http://notifo.com/
 """
 
 import weechat
