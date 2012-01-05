@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 """
 Author: Gosuke Miyashita <gosukenator@gmail.com>
@@ -6,8 +5,8 @@ Homepage: https://github.com/mizzy/weechat-plugins/
 Version: 1.0
 License: MIT License
 
-This plugin requires "im.kayac.com" in your iPod touch/iPhone
-See here: http://im.kayac.com/
+This plugin is for pushing notifications to im.kayac.com.
+See: http://im.kayac.com/
 
 This plugins is based on notifo_notify.py.
 See: http://www.weechat.org/scripts/source/stable/notifo_notify.py/
@@ -25,7 +24,6 @@ See here: http://notifo.com/
 
 import weechat
 import urllib
-import urllib2
 
 ## registration
 
@@ -52,12 +50,15 @@ def postIm(message, handler=None, label=None, title=None):
     if USERNAME != "" and PASSWORD != "":
         url = "http://im.kayac.com/api/post/" + USERNAME
         opt_dict = {
-            "message": message,
+            "message": "[%s] - %s\n%s" % (label, title, message),
             "password": PASSWORD,
             }
         opt = urllib.urlencode(opt_dict)
-        req = urllib2.Request(url, opt)
-        res = urllib2.urlopen(req)
+        cmd = "python -c 'from urllib2 import Request, urlopen; urlopen(Request(\"%s\", \"%s\"))'" % (url, opt)
+        weechat.hook_process(cmd, 10000, "hook_process_cb", "")
+
+def hook_process_cb(data, command, rc, stdout, stderr):
+    return weechat.WEECHAT_RC_OK
 
 def signal_callback(data, signal, signal_data):
     if signal == "weechat_pv":
