@@ -2,7 +2,7 @@
 """
 Author: Gosuke Miyashita <gosukenator@gmail.com>
 Homepage: https://github.com/mizzy/weechat-plugins/
-Version: 1.1
+Version: 1.2
 License: MIT License
 
 This plugin is for pushing notifications to im.kayac.com.
